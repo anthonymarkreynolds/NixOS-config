@@ -139,7 +139,16 @@
         customRC = ''
           " here your custom configuration goes!
           colo one
-	  autocmd FileType nix :packadd vim-nix
+          autocmd FileType nix :packadd vim-nix
+          set guifont=monospace:h9
+          " system clipboard
+          nmap <c-c> "+y
+          vmap <c-c> "+y
+          nmap <c-v> "+p
+          inoremap <c-v> <c-r>+
+          cnoremap <c-v> <c-r>+
+          " use <c-r> to insert original character without triggering things like auto-pairs
+          inoremap <c-r> <c-v>
         '';
         packages.myVimPackage = with pkgs.vimPlugins; {
           # loaded on launch
@@ -150,6 +159,8 @@
       };
     };
   };
+
+  
 
   environment.sessionVariables = rec {
     WINIT_X11_SCALE_FACTOR = "1";
