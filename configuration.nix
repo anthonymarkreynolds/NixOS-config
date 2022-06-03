@@ -139,6 +139,10 @@
       configure = {
         customRC = ''
           " here your custom configuration goes!
+
+	  "NEOVIDE
+	  let g:neovide_transparency=0.8
+
           set number
 
           colo one
