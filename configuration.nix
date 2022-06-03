@@ -127,7 +127,7 @@
     rbenv
     busybox
     gimp
-    emacs
+    neovide
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
