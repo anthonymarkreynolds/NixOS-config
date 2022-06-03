@@ -71,6 +71,7 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+  # services.xserver.desktopManager.plasma5.useQtScaling = true;
 
 
   # Enable the Plasma 5 Desktop Environment.
@@ -147,6 +148,10 @@
         };
       };
     };
+  };
+
+  environment.sessionVariables = rec {
+    WINIT_X11_SCALE_FACTOR = "1";
   };
 
   # Some programs need SUID wrappers, can be configured further or are
