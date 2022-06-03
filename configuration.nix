@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./vim
+      # ./vim
     ];
 
   nix = {
@@ -129,6 +129,25 @@
     gimp
     neovide
   ];
+
+  programs = {
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+      configure = {
+        customRC = ''
+          " here your custom configuration goes!
+          colo one
+        '';
+        packages.myVimPackage = with pkgs.vimPlugins; {
+          # loaded on launch
+          start = [ vim-one ];
+          # manually loadable by calling `:packadd $plugin-name`
+          opt = [ ];
+        };
+      };
+    };
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
