@@ -139,9 +139,13 @@
       configure = {
         customRC = ''
           " here your custom configuration goes!
+          set number
+
           colo one
           autocmd FileType nix :packadd vim-nix
           set guifont=monospace:h9
+
+
           " system clipboard
           nmap <c-c> "+y
           vmap <c-c> "+y
@@ -150,10 +154,22 @@
           cnoremap <c-v> <c-r>+
           " use <c-r> to insert original character without triggering things like auto-pairs
           inoremap <c-r> <c-v>
+
+          "AIRLINE
+          let g:airline#extensions#tabline#enabled = 1
+          let g:airline#extensions#tabline#left_sep = ''
+          let g:airline#extensions#tabline#left_alt_sep = ''
+          let g:airline#extensions#tabline#fnamemod = ':t'
+          let g:airline_theme='onedark'
+          let g:airline_powerline_fonts = 1
         '';
         packages.myVimPackage = with pkgs.vimPlugins; {
           # loaded on launch
-          start = [ vim-one ];
+          start = [ 
+	    vim-one 
+	    vim-airline
+	    vim-airline-themes
+	  ];
           # manually loadable by calling `:packadd $plugin-name`
           opt = [ vim-nix ];
         };
