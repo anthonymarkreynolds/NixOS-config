@@ -160,7 +160,19 @@
     };
   };
 
-  
+  fonts = {
+    enableDefaultFonts = true;
+    fonts = with pkgs; [
+      (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+    ];
+    fontconfig = {
+      defaultFonts = {
+        monospace = [
+          "FiraCode Nerd Font"
+	];
+      };
+    };
+  };
 
   environment.sessionVariables = rec {
     WINIT_X11_SCALE_FACTOR = "1";
