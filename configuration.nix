@@ -139,12 +139,13 @@
         customRC = ''
           " here your custom configuration goes!
           colo one
+	  autocmd FileType nix :packadd vim-nix
         '';
         packages.myVimPackage = with pkgs.vimPlugins; {
           # loaded on launch
           start = [ vim-one ];
           # manually loadable by calling `:packadd $plugin-name`
-          opt = [ ];
+          opt = [ vim-nix ];
         };
       };
     };
