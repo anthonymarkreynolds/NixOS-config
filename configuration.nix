@@ -144,20 +144,22 @@
 	  let g:neovide_transparency=0.8
 
           set number
+	  set list
 
           colo one
           autocmd FileType nix :packadd vim-nix
+	  autocmd TermOpen * setlocal nonumber norelativenumber
           set guifont=monospace:h9
 
 
           " system clipboard
-          nmap <c-c> "+y
-          vmap <c-c> "+y
-          nmap <c-v> "+p
-          inoremap <c-v> <c-r>+
-          cnoremap <c-v> <c-r>+
+          " nmap <c-c> "+y
+          " vmap <c-c> "+y
+          " nmap <c-v> "+p
+          " inoremap <c-v> <c-r>+
+          " cnoremap <c-v> <c-r>+
           " use <c-r> to insert original character without triggering things like auto-pairs
-          inoremap <c-r> <c-v>
+          " inoremap <c-r> <c-v>
 
           "AIRLINE
           let g:airline#extensions#tabline#enabled = 1
