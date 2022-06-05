@@ -137,21 +137,12 @@
       enable = true;
       defaultEditor = true;
       configure = {
-        customRC = ''
+      customRC = ''
+        luafile ~/flakes/nixos/init.lua
           " here your custom configuration goes!
 
-	  "NEOVIDE
-	  let g:neovide_transparency=0.8
-
-          set number
-	  set list
-
-          colo one
           autocmd FileType nix :packadd vim-nix
-	  autocmd TermOpen * setlocal nonumber norelativenumber
-          set guifont=monospace:h9
-
-
+	        autocmd TermOpen * setlocal nonumber norelativenumber
           " system clipboard
           " nmap <c-c> "+y
           " vmap <c-c> "+y
