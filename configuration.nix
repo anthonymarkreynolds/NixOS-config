@@ -164,6 +164,12 @@
           let g:indentline_color_dark = 1
           let g:vim_json_conceal=0
           let g:markdown_syntax_conceal=0
+
+          "NERDTREE
+          nmap <F6> :NERDTreeToggle<CR>
+          autocmd StdinReadPre * let s:std_in=1
+          let NERDTreeShowHidden=1
+          let NERDTreeMinimalUI=1
         '';
         packages.myVimPackage = with pkgs.vimPlugins; {
           # loaded on launch
@@ -178,6 +184,15 @@
                 tree-sitter-lua
                 ]
             ))
+            telescope-nvim
+
+            nerdtree
+            nerdtree-git-plugin
+            vim-nerdtree-syntax-highlight
+            vim-devicons
+
+            vim-commentary
+            vim-surround
           ];
           # manually loadable by calling `:packadd $plugin-name`
           opt = [ vim-nix ];
