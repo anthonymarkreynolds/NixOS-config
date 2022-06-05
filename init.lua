@@ -1,5 +1,5 @@
 local set = vim.opt
- 
+
 set.expandtab = true
 set.smarttab = true
 set.shiftwidth = 2
@@ -28,7 +28,6 @@ set.guifont = "monospace:h10"
 
 vim.cmd "colorscheme one"
 
---require("nvim-treesitter.install").compiles
 require("nvim-treesitter.configs").setup {
   ensure_isntalled = "all",
   highlight = {

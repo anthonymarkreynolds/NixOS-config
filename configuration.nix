@@ -175,6 +175,7 @@
             (nvim-treesitter.withPlugins (
               plugins: with plugins; [
                 tree-sitter-nix
+                tree-sitter-lua
                 ]
             ))
           ];
