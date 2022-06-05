@@ -11,7 +11,7 @@
     ];
 
   nix = {
-    package = pkgs.nixFlakes; 
+    package = pkgs.nixFlakes;
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
@@ -76,7 +76,6 @@
   # Enable the Plasma 5 Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
-  
 
   # Configure keymap in X11
   services.xserver.layout = "us";
@@ -141,7 +140,7 @@
           " here your custom configuration goes!
 
           autocmd FileType nix :packadd vim-nix
-	        autocmd TermOpen * setlocal nonumber norelativenumber
+          autocmd TermOpen * setlocal nonumber norelativenumber
           " system clipboard
           " nmap <c-c> "+y
           " vmap <c-c> "+y
@@ -158,14 +157,27 @@
           let g:airline#extensions#tabline#fnamemod = ':t'
           let g:airline_theme='onedark'
           let g:airline_powerline_fonts = 1
+
+          "INDENTLINE
+          let g:indentLine_char = '▏'
+          let g:indentLine_color_gui = "#4b5263"
+          let g:indentline_color_dark = 1
+          let g:vim_json_conceal=0
+          let g:markdown_syntax_conceal=0
         '';
         packages.myVimPackage = with pkgs.vimPlugins; {
           # loaded on launch
-          start = [ 
-	    vim-one 
-	    vim-airline
-	    vim-airline-themes
-	  ];
+          start = [
+            vim-one
+            vim-airline
+            vim-airline-themes
+            indentLine
+            (nvim-treesitter.withPlugins (
+              plugins: with plugins; [
+                tree-sitter-nix
+                ]
+            ))
+          ];
           # manually loadable by calling `:packadd $plugin-name`
           opt = [ vim-nix ];
         };
@@ -182,7 +194,7 @@
       defaultFonts = {
         monospace = [
           "FiraCode Nerd Font"
-	];
+  ];
       };
     };
   };
