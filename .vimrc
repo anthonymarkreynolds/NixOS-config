@@ -37,6 +37,7 @@ autocmd StdinReadPre * let s:std_in=1
 let NERDTreeShowHidden=1
 let NERDTreeMinimalUI=1
 let NERDTreeStatusline = '%#NonText#'
+let NERDTreeIgnore=['\.git$']
 
 augroup nerdtreehidecwd
   autocmd!
