@@ -135,42 +135,7 @@
       enable = true;
       defaultEditor = true;
       configure = {
-      customRC = ''
-        luafile ~/flakes/nixos/init.lua
-          " here your custom configuration goes!
-
-          autocmd FileType nix :packadd vim-nix
-          autocmd TermOpen * setlocal nonumber norelativenumber
-          " system clipboard
-          " nmap <c-c> "+y
-          " vmap <c-c> "+y
-          " nmap <c-v> "+p
-          " inoremap <c-v> <c-r>+
-          " cnoremap <c-v> <c-r>+
-          " use <c-r> to insert original character without triggering things like auto-pairs
-          " inoremap <c-r> <c-v>
-
-          "AIRLINE
-          let g:airline#extensions#tabline#enabled = 1
-          let g:airline#extensions#tabline#left_sep = ''
-          let g:airline#extensions#tabline#left_alt_sep = ''
-          let g:airline#extensions#tabline#fnamemod = ':t'
-          let g:airline_theme='onedark'
-          let g:airline_powerline_fonts = 1
-
-          "INDENTLINE
-          let g:indentLine_char = '▏'
-          let g:indentLine_color_gui = "#4b5263"
-          let g:indentline_color_dark = 1
-          let g:vim_json_conceal=0
-          let g:markdown_syntax_conceal=0
-
-          "NERDTREE
-          nmap <F6> :NERDTreeToggle<CR>
-          autocmd StdinReadPre * let s:std_in=1
-          let NERDTreeShowHidden=1
-          let NERDTreeMinimalUI=1
-        '';
+      customRC = builtins.readFile ./.vimrc;
         packages.myVimPackage = with pkgs.vimPlugins; {
           # loaded on launch
           start = [
