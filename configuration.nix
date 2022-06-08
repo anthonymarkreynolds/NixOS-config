@@ -40,7 +40,7 @@
   networking.useDHCP = false;
   networking.interfaces.eno1.useDHCP = true;
   networking.networkmanager.enable = true;
-  networking.extraHosts = "192.168.122.217 ubuntutest";
+  networking.extraHosts = "192.168.122.204 devserver";
   # networking.networkmanager.dns = "systemd-resolved";
   # services.resolved.enable = true;
   # services.resolved.extraConfig = "";
@@ -128,6 +128,8 @@
     busybox
     gimp
     neovide
+    vscode
+    vlc
   ];
 
   programs = {
@@ -150,10 +152,11 @@
                 ]
             ))
             telescope-nvim
+            toggleterm-nvim
 
-            nerdtree
-            nerdtree-git-plugin
-            vim-nerdtree-syntax-highlight
+            /* nerdtree */
+            /* nerdtree-git-plugin */
+            /* vim-nerdtree-syntax-highlight */
             vim-devicons
 
             vim-commentary

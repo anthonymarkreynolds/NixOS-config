@@ -32,12 +32,12 @@ let g:vim_json_conceal=0
 let g:markdown_syntax_conceal=0
 
 "NERDTREE
-nmap <F6> :NERDTreeToggle<CR>
-autocmd StdinReadPre * let s:std_in=1
-let NERDTreeShowHidden=1
-let NERDTreeMinimalUI=1
-let NERDTreeStatusline = '%#NonText#'
-let NERDTreeIgnore=['\.git$']
+" nmap <F6> :NERDTreeToggle<CR>
+" autocmd StdinReadPre * let s:std_in=1
+" let NERDTreeShowHidden=1
+" let NERDTreeMinimalUI=1
+" let NERDTreeStatusline = '%#NonText#'
+" let NERDTreeIgnore=['\.git$']
 
 augroup nerdtreehidecwd
   autocmd!
