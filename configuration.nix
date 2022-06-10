@@ -108,6 +108,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    sshfs
     xclip
     calibre
     wget
@@ -152,7 +153,8 @@
                 ]
             ))
             telescope-nvim
-            toggleterm-nvim
+            /* toggleterm-nvim */
+            vim-floaterm
 
             /* nerdtree */
             /* nerdtree-git-plugin */
