@@ -150,6 +150,7 @@
               plugins: with plugins; [
                 tree-sitter-nix
                 tree-sitter-lua
+                tree-sitter-ruby
                 ]
             ))
             telescope-nvim
