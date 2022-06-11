@@ -1,5 +1,5 @@
 function myClear {
-  for i in {3..$(tput lines)}
+  for i in {2..$(tput lines)}
   do
     echo ""
   done
