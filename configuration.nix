@@ -119,7 +119,6 @@
     git
     which
     ranger
-    tmux
     ruby
     rubyPackages.rspec
     git-crypt
