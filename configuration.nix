@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./alacritty/default.nix
     ];
 
   nix = {
@@ -86,6 +87,7 @@
 
   # Enable sound.
   sound.enable = true;
+  sound.enableOSSEmulation = true;
   hardware.pulseaudio.enable = true;
 
   hardware.bluetooth.enable = true;
@@ -108,6 +110,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    friture
     sshfs
     xclip
     calibre
@@ -131,6 +134,9 @@
     neovide
     vscode
     vlc
+    lazygit
+    baudline
+    neofetch
   ];
 
   programs = {
@@ -154,12 +160,11 @@
                 ]
             ))
             telescope-nvim
-            /* toggleterm-nvim */
-            vim-floaterm
+            toggleterm-nvim
 
-            /* nerdtree */
-            /* nerdtree-git-plugin */
-            /* vim-nerdtree-syntax-highlight */
+            vim-unimpaired
+
+            gitsigns-nvim
             vim-devicons
 
             vim-commentary
