@@ -65,7 +65,7 @@ set.number = true;
 set.list = true
 set.listchars = "tab:>-,trail:●"
 
-set.guifont = "monospace:h10"
+set.guifont = "monospace:h9"
 set.laststatus = 3
 set.pastetoggle = '<F3>'
 
