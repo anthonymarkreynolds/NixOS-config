@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       ./alacritty
       ./tmux
+      ./zsh
     ];
 
   nix = {
