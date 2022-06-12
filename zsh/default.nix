@@ -13,6 +13,8 @@
     lazygit
     neofetch
     exa
+    bat
+    ripgrep
   ];
   programs.zsh = {
     enable = true;
