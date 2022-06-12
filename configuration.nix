@@ -102,7 +102,7 @@
   users.users.anthony = {
     createHome = true;
     isNormalUser = true;
-    extraGroups = [ "wheel" "video" "audio" "disk" "networkmanager" "libvirtd" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "video" "audio" "disk" "networkmanager" "libvirtd" "fuse"]; # Enable ‘sudo’ for the user.
     group = "users";
     home = "/home/anthony";
     uid = 1000;
@@ -119,6 +119,7 @@
     git
     ruby
     rubyPackages.rspec
+    rubyPackages.rake
     git-crypt
     qemu
     virt-manager
@@ -128,6 +129,9 @@
     vscode
     vlc
     baudline
+
+    ruby
+    rubyPackages.solargraph
   ];
 
   programs = {
@@ -143,6 +147,7 @@
             vim-airline
             vim-airline-themes
             indentLine
+            nvim-lspconfig
             (nvim-treesitter.withPlugins (
               plugins: with plugins; [
                 tree-sitter-nix
