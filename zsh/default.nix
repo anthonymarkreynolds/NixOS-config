@@ -33,6 +33,7 @@
       "extract"
     ];
     shellAliases = {
+      lg = "lazygit";
       ls = "exa -la";
       nr = "nixos-rebuild switch --flake ~/flakes/nixos/#anthony --use-remote-sudo";
       nu = "nix flake update ~/flakes/nixos && nixos-rebuild switch --flake ~/flakes/nixos/#anthony --use-remote-sudo";
