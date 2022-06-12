@@ -12,6 +12,7 @@
     busybox
     lazygit
     neofetch
+    exa
   ];
   programs.zsh = {
     enable = true;
@@ -26,6 +27,11 @@
       "command-not-found"
       "extract"
     ];
+    shellAliases = {
+      ls = "exa -la";
+      nr = "nixos-rebuild switch --flake ~/flakes/nixos/#anthony --use-remote-sudo";
+      nu = "nix flake update ~/flakes/nixos && nixos-rebuild switch --flake ~/flakes/nixos/#anthony --use-remote-sudo";
+    };
     shellInit = builtins.readFile ./shellInit.zsh;
     promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
   };
