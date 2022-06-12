@@ -33,7 +33,7 @@
       "extract"
     ];
     shellAliases = {
-      cat = "bat"
+      cat = "bat";
       lg = "lazygit";
       ls = "exa -la";
       nr = "nixos-rebuild switch --flake ~/flakes/nixos/#anthony --use-remote-sudo";
