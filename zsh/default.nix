@@ -15,6 +15,9 @@
     exa
     bat
     ripgrep
+    fd
+    tokei
+    procs
   ];
   programs.zsh = {
     enable = true;
