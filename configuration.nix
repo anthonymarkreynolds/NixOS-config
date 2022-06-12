@@ -113,31 +113,21 @@
   environment.systemPackages = with pkgs; [
     # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     friture
-    sshfs
     xclip
     calibre
-    wget
     firefox
     git
-    which
-    ranger
     ruby
     rubyPackages.rspec
     git-crypt
-    gh
     qemu
-    sysz
     virt-manager
     vscode
-    rbenv
-    busybox
     gimp
     neovide
     vscode
     vlc
-    lazygit
     baudline
-    neofetch
   ];
 
   programs = {

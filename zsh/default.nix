@@ -4,6 +4,15 @@
   environment.systemPackages = with pkgs; [ 
     zsh
     zsh-nix-shell
+    sshfs
+    wget
+    git
+    ranger
+    gh
+    sysz
+    busybox
+    lazygit
+    neofetch
   ];
   programs.zsh = {
     enable = true;
