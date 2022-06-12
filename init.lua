@@ -68,6 +68,7 @@ set.listchars = "tab:>-,trail:●"
 set.guifont = "monospace:h9"
 set.laststatus = 3
 set.pastetoggle = '<F3>'
+set.mouse = true
 
 
 set.termguicolors = true
