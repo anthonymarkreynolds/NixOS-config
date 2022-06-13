@@ -143,7 +143,7 @@
         packages.myVimPackage = with pkgs.vimPlugins; {
           # loaded on launch
           start = [
-            vim-one
+            onedark-nvim
             vim-airline
             vim-airline-themes
             indentLine
