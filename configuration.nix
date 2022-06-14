@@ -112,6 +112,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    feh
     friture
     xclip
     calibre
@@ -144,8 +145,10 @@
           # loaded on launch
           start = [
             onedark-nvim
-            vim-airline
-            vim-airline-themes
+            nvim-tree-lua
+            nvim-web-devicons
+            lualine-nvim
+            bufferline-nvim
             indentLine
             nvim-lspconfig
             (nvim-treesitter.withPlugins (
@@ -157,12 +160,9 @@
             ))
             telescope-nvim
             toggleterm-nvim
-
             vim-unimpaired
-
             gitsigns-nvim
             vim-devicons
-
             vim-commentary
             vim-surround
           ];

@@ -2,8 +2,8 @@
 require('onedark').load()-- Lua
 require('onedark').setup  {
     -- Main options --
-    style = 'darker', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
-    transparent = false,  -- Show/hide background
+    style = 'dark', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+    transparent = true,  -- Show/hide background
     term_colors = true, -- Change terminal color as per the selected theme style
     ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
     cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
@@ -19,7 +19,8 @@ require('onedark').setup  {
         keywords = 'none',
         functions = 'none',
         strings = 'none',
-        variables = 'none'
+        variables = 'none',
+        brackets = 'none',
     },
 
     -- Custom Highlights --
@@ -40,23 +41,24 @@ let g:neovide_transparency=0.8
 let g:neovide_scroll_animation_length=0.175
 let g:neovide_floating_opacity=0.65
 
+
+let mapleader='\<Space>'
+
 autocmd FileType nix :packadd vim-nix
 autocmd TermOpen * setlocal nonumber norelativenumber
 
-hi WinSeparator guifg=#4b5263
+hi Normal guibg=#181a1f
+hi WinSeparator guifg=#2c323c
+hi NvimTreeWinSeparator guifg=#2c323c
 
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-"AIRLINE
-let g:airline_theme='onedark'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ''
-let g:airline#extensions#tabline#left_alt_sep = ''
-let g:airline#extensions#tabline#fnamemod = ':t'
+tnoremap <c-ESC> <c-\><c-n>
+
+nnoremap <C-n> :NvimTreeToggle<CR>
 
 "INDENTLINE
 let g:indentLine_char = '▏'
@@ -217,3 +219,305 @@ for _, lsp in pairs(servers) do
     }
   }
 end
+
+require'nvim-tree'.setup {}-- BEGIN_DEFAULT_OPTS
+-- require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
+--   auto_reload_on_write = true,
+--   create_in_closed_folder = false,
+--   disable_netrw = false,
+--   hijack_cursor = false,
+--   hijack_netrw = true,
+--   hijack_unnamed_buffer_when_opening = false,
+--   ignore_buffer_on_setup = false,
+--   open_on_setup = false,
+--   open_on_setup_file = false,
+--   open_on_tab = false,
+--   sort_by = "name",
+--   update_cwd = false,
+--   reload_on_bufenter = false,
+--   respect_buf_cwd = false,
+--   view = {
+--     adaptive_size = false,
+--     centralize_selection = false,
+--     width = 30,
+--     height = 30,
+--     hide_root_folder = false,
+--     side = "left",
+--     preserve_window_proportions = false,
+--     number = false,
+--     relativenumber = false,
+--     signcolumn = "yes",
+--     mappings = {
+--       custom_only = false,
+--       list = {
+--         -- user mappings go here
+--       },
+--     },
+--   },
+--   renderer = {
+--     add_trailing = false,
+--     group_empty = false,
+--     highlight_git = false,
+--     full_name = false,
+--     highlight_opened_files = "none",
+--     root_folder_modifier = ":~",
+--     indent_markers = {
+--       enable = false,
+--       icons = {
+--         corner = "└ ",
+--         edge = "│ ",
+--         item = "│ ",
+--         none = "  ",
+--       },
+--     },
+--     icons = {
+--       webdev_colors = true,
+--       git_placement = "before",
+--       padding = " ",
+--       symlink_arrow = " ➛ ",
+--       show = {
+--         file = true,
+--         folder = true,
+--         folder_arrow = true,
+--         git = true,
+--       },
+--       glyphs = {
+--         default = "",
+--         symlink = "",
+--         folder = {
+--           arrow_closed = "",
+--           arrow_open = "",
+--           default = "",
+--           open = "",
+--           empty = "",
+--           empty_open = "",
+--           symlink = "",
+--           symlink_open = "",
+--         },
+--         git = {
+--           unstaged = "✗",
+--           staged = "✓",
+--           unmerged = "",
+--           renamed = "➜",
+--           untracked = "★",
+--           deleted = "",
+--           ignored = "◌",
+--         },
+--       },
+--     },
+--     special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md" },
+--   },
+--   hijack_directories = {
+--     enable = true,
+--     auto_open = true,
+--   },
+--   update_focused_file = {
+--     enable = false,
+--     update_cwd = false,
+--     ignore_list = {},
+--   },
+--   ignore_ft_on_setup = {},
+--   system_open = {
+--     cmd = "",
+--     args = {},
+--   },
+--   diagnostics = {
+--     enable = false,
+--     show_on_dirs = false,
+--     icons = {
+--       hint = "",
+--       info = "",
+--       warning = "",
+--       error = "",
+--     },
+--   },
+--   filters = {
+--     dotfiles = false,
+--     custom = {},
+--     exclude = {},
+--   },
+--   filesystem_watchers = {
+--     enable = false,
+--     interval = 100,
+--   },
+--   git = {
+--     enable = true,
+--     ignore = true,
+--     timeout = 400,
+--   },
+--   actions = {
+--     use_system_clipboard = true,
+--     change_dir = {
+--       enable = true,
+--       global = false,
+--       restrict_above_cwd = false,
+--     },
+--     expand_all = {
+--       max_folder_discovery = 300,
+--     },
+--     open_file = {
+--       quit_on_open = false,
+--       resize_window = true,
+--       window_picker = {
+--         enable = true,
+--         chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+--         exclude = {
+--           filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
+--           buftype = { "nofile", "terminal", "help" },
+--         },
+--       },
+--     },
+--     remove_file = {
+--       close_window = true,
+--     },
+--   },
+--   trash = {
+--     cmd = "gio trash",
+--     require_confirm = true,
+--   },
+--   live_filter = {
+--     prefix = "[FILTER]: ",
+--     always_show_folders = true,
+--   },
+--   log = {
+--     enable = false,
+--     truncate = false,
+--     types = {
+--       all = false,
+--       config = false,
+--       copy_paste = false,
+--       diagnostics = false,
+--       git = false,
+--       profile = false,
+--       watcher = false,
+--     },
+--   },
+-- } -- END_DEFAULT_OPTS
+
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+    theme = 'onedark',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {},
+    always_divide_middle = true,
+    globalstatus = false,
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  extensions = {}
+}
+
+require("bufferline").setup{
+  options = {
+    offsets = {
+      {
+        filetype = "NvimTree",
+        text = "File Explorer",
+        highlight = "Directory",
+        text_align = "left"
+      }
+    }
+  }
+}
+-- require('bufferline').setup {
+--   options = {
+--     mode = "buffers", -- set to "tabs" to only show tabpages instead
+--     numbers = "none" | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
+--     close_command = "bdelete! %d",       -- can be a string | function, see "Mouse actions"
+--     right_mouse_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
+--     left_mouse_command = "buffer %d",    -- can be a string | function, see "Mouse actions"
+--     middle_mouse_command = nil,          -- can be a string | function, see "Mouse actions"
+--     -- NOTE: this plugin is designed with this icon in mind,
+--     -- and so changing this is NOT recommended, this is intended
+--     -- as an escape hatch for people who cannot bear it for whatever reason
+--     indicator_icon = '▎',
+--     buffer_close_icon = '',
+--     modified_icon = '●',
+--     close_icon = '',
+--     left_trunc_marker = '',
+--     right_trunc_marker = '',
+--     --- name_formatter can be used to change the buffer's label in the bufferline.
+--     --- Please note some names can/will break the
+--     --- bufferline so use this at your discretion knowing that it has
+--     --- some limitations that will *NOT* be fixed.
+--     name_formatter = function(buf)  -- buf contains a "name", "path" and "bufnr"
+--       -- remove extension from markdown files for example
+--       if buf.name:match('%.md') then
+--         return vim.fn.fnamemodify(buf.name, ':t:r')
+--       end
+--     end,
+--     max_name_length = 18,
+--     max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
+--     tab_size = 18,
+--     diagnostics = false | "nvim_lsp" | "coc",
+--     diagnostics_update_in_insert = false,
+--     diagnostics_indicator = function(count, level, diagnostics_dict, context)
+--       return "("..count..")"
+--     end,
+--     -- NOTE: this will be called a lot so don't do any heavy processing here
+--     custom_filter = function(buf_number, buf_numbers)
+--       -- filter out filetypes you don't want to see
+--       if vim.bo[buf_number].filetype ~= "<i-dont-want-to-see-this>" then
+--         return true
+--       end
+--       -- filter out by buffer name
+--       if vim.fn.bufname(buf_number) ~= "<buffer-name-I-dont-want>" then
+--         return true
+--       end
+--       -- filter out based on arbitrary rules
+--       -- e.g. filter out vim wiki buffer from tabline in your work repo
+--       if vim.fn.getcwd() == "<work-repo>" and vim.bo[buf_number].filetype ~= "wiki" then
+--         return true
+--       end
+--       -- filter out by it's index number in list (don't show first buffer)
+--       if buf_numbers[1] ~= buf_number then
+--         return true
+--       end
+--     end,
+--     offsets = {{filetype = "NvimTree", text = "File Explorer" | function , text_align = "left" | "center" | "right"}},
+--     color_icons = true | false, -- whether or not to add the filetype icon highlights
+--     show_buffer_icons = true | false, -- disable filetype icons for buffers
+--     show_buffer_close_icons = true | false,
+--     show_buffer_default_icon = true | false, -- whether or not an unrecognised filetype should show a default icon
+--     show_close_icon = true | false,
+--     show_tab_indicators = true | false,
+--     persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
+--     -- can also be a table containing 2 custom separators
+--     -- [focused and unfocused]. eg: { '|', '|' }
+--     separator_style = "slant" | "thick" | "thin" | { 'any', 'any' },
+--     enforce_regular_tabs = false | true,
+--     always_show_bufferline = true | false,
+--     sort_by = 'insert_after_current' |'insert_at_end' | 'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs' | function(buffer_a, buffer_b)
+--       -- add custom logic
+--       return buffer_a.modified > buffer_b.modified
+--     end
+--   }
+-- }
+require("toggleterm").setup{
+  open_mapping = [[<c-a>]],
+  -- shade_terminals = true,
+  highlights = {
+    -- highlights which map to a highlight group name and a table of it's values
+    -- NOTE: this is only a subset of values, any group placed here will be set for the terminal window split
+    Normal = {
+      guibg = "NONE",
+    },
+  }
+}
