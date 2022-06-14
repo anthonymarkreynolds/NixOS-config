@@ -51,6 +51,13 @@ autocmd TermOpen * setlocal nonumber norelativenumber
 hi WinSeparator guifg=#2c323c
 hi NvimTreeWinSeparator guifg=#2c323c
 
+hi TelescopeBorder guifg=#828997
+hi TelescopePreviewBorder guifg=#2c323c
+hi TelescopePromptBorder guifg=#2c323c
+hi TelescopeResultsBorder guifg=#2c323c
+
+hi ToggleTerm1FloatBorder guifg=#2c323c
+
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -117,9 +124,7 @@ set.laststatus = 3
 set.pastetoggle = '<F3>'
 set.mouse = "a"
 
-
 set.termguicolors = true
-
 
 require("nvim-treesitter.configs").setup {
   ensure_isntalled = "all",
@@ -533,6 +538,20 @@ require("toggleterm").setup{
     },
   }
 }
+local Terminal = require('toggleterm.terminal').Terminal
+local lazygit = Terminal:new({ 
+  cmd = "lazygit",
+  hidden = true,
+  direction = "float",
+  close_on_exit = true,
+})
+
+function _lazygit_toggle()
+  lazygit:toggle()
+end
+
+vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
+
 vim.cmd([[
   hi Normal guibg=#181a1f
 ]])
