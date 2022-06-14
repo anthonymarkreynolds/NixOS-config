@@ -41,13 +41,13 @@ let g:neovide_transparency=0.8
 let g:neovide_scroll_animation_length=0.175
 let g:neovide_floating_opacity=0.65
 
+set timeout timeoutlen=3000 ttimeoutlen=100
 
-let mapleader='\<Space>'
+let mapleader = "\<Space>"
 
 autocmd FileType nix :packadd vim-nix
 autocmd TermOpen * setlocal nonumber norelativenumber
 
-hi Normal guibg=#181a1f
 hi WinSeparator guifg=#2c323c
 hi NvimTreeWinSeparator guifg=#2c323c
 
@@ -56,9 +56,19 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+tnoremap <C-h> <c-\><c-n><C-w>h
+tnoremap <C-j> <c-\><c-n><C-w>j
+tnoremap <C-k> <c-\><c-n><C-w>k
+tnoremap <C-l> <c-\><c-n><C-w>l
+
 tnoremap <c-ESC> <c-\><c-n>
 
 nnoremap <C-n> :NvimTreeToggle<CR>
+
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 "INDENTLINE
 let g:indentLine_char = '▏'
@@ -220,7 +230,9 @@ for _, lsp in pairs(servers) do
   }
 end
 
-require'nvim-tree'.setup {}-- BEGIN_DEFAULT_OPTS
+require'nvim-tree'.setup {
+  update_cwd = true,
+}
 -- require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
 --   auto_reload_on_write = true,
 --   create_in_closed_folder = false,
@@ -521,3 +533,6 @@ require("toggleterm").setup{
     },
   }
 }
+vim.cmd([[
+  hi Normal guibg=#181a1f
+]])
