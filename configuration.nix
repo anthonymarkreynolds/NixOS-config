@@ -151,6 +151,7 @@
             bufferline-nvim
             indentLine
             nvim-lspconfig
+            neorg
             (nvim-treesitter.withPlugins (
               plugins: with plugins; [
                 tree-sitter-nix
