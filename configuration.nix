@@ -133,6 +133,7 @@
 
     ruby
     rubyPackages.solargraph
+    sumneko-lua-language-server
   ];
 
   programs = {
