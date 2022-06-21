@@ -149,8 +149,9 @@
             nvim-web-devicons
             lualine-nvim
             bufferline-nvim
-            indentLine
+            indent-blankline-nvim
             nvim-lspconfig
+            vim-matchup
             neorg
             (nvim-treesitter.withPlugins (
               plugins: with plugins; [

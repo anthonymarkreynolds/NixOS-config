@@ -77,13 +77,6 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-"INDENTLINE
-let g:indentLine_char = '▏'
-let g:indentLine_color_gui = "#4b5263"
-let g:indentline_color_dark = 1
-let g:vim_json_conceal=0
-let g:markdown_syntax_conceal=0
-
 augroup nerdtreehidecwd
   autocmd!
   autocmd FileType nerdtree setlocal conceallevel=3 | syntax match NERDTreeHideCWD #^[</].*$# conceal
@@ -113,11 +106,12 @@ set.scrolloff = 5
 
 set.fileencoding = 'utf-8'
 set.hidden = true
-set.relativenumber = true
 set.number = true;
+set.relativenumber = true
 
 set.list = true
-set.listchars = "tab:>-,trail:●"
+set.listchars = "tab:>->,trail:●,eol:↴,space:⋅"
+
 
 set.guifont = "monospace:h9"
 set.laststatus = 3
@@ -125,6 +119,17 @@ set.pastetoggle = '<F3>'
 set.mouse = "a"
 
 set.termguicolors = true
+
+require("indent_blankline").setup {
+  char = "▏",
+  show_end_of_line = true,
+  show_current_context = true,
+  show_current_context_start = true,
+  space_char_blankline = " ",
+  vim.cmd([[
+    hi IndentLineChar guifg=#4b5263
+  ]])
+}
 
 require("nvim-treesitter.configs").setup {
   ensure_isntalled = "all",
@@ -237,6 +242,12 @@ end
 
 require'nvim-tree'.setup {
   update_cwd = true,
+}
+
+require'nvim-treesitter.configs'.setup {
+  matchup = {
+    enable = true,              -- mandatory, false will disable the whole extension
+  },
 }
 -- require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
 --   auto_reload_on_write = true,
@@ -568,4 +579,9 @@ require('neorg').setup {
 
 vim.cmd([[
   hi Normal guibg=#181a1f
+]])
+vim.cmd([[
+	autocmd FileType lua set tabstop=4
+	autocmd FileType lua set shiftwidth=4
+	autocmd FileType lua set expandtab!
 ]])
