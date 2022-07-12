@@ -15,6 +15,7 @@ vim.keymap.set("t", "<C-h>", "<c-\\><c-n><C-w>h", opts)
 vim.keymap.set("t", "<C-j>", "<c-\\><c-n><C-w>j", opts)
 vim.keymap.set("t", "<C-k>", "<c-\\><c-n><C-w>k", opts)
 vim.keymap.set("t", "<C-l>", "<c-\\><c-n><C-w>l", opts)
+vim.keymap.set("t", "<c-ESC>","<c-\\><c-n>", opts)
 
 local Terminal = require("toggleterm.terminal").Terminal
 local lazygit = Terminal:new({

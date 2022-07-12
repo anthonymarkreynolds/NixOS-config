@@ -50,7 +50,7 @@
             vim-surround
           ];
           # manually loadable by calling `:packadd $plugin-name`
-          opt = [ vim-nix ];
+          opt = [];
         };
       };
     };

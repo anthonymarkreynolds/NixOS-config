@@ -1,15 +1,10 @@
 require("other_modules/keybinds")
 vim.cmd([[
-set timeout timeoutlen=3000 ttimeoutlen=100
 
 let mapleader = "\<Space>"
 
 autocmd FileType nix :packadd vim-nix
 autocmd TermOpen * setlocal nonumber norelativenumber
-
-
-tnoremap <c-ESC> <c-\><c-n>
-
 
 ]])
 
@@ -21,6 +16,9 @@ set.expandtab = true
 set.smarttab = true
 set.shiftwidth = 2
 set.tabstop = 2
+
+set.timeout = 3000
+set.timeoutlen = 100
 
 set.hlsearch = false
 set.incsearch = true
