@@ -21,3 +21,6 @@ function ranger {
 }
 clear
 export TERM=xterm-256color
+
+NVIM_DIR=~/flakes/nixos/lua
+export NVIM_DIR

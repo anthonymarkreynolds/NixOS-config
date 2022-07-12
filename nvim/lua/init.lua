@@ -1,40 +1,77 @@
+require("lua")
+require("onedark").load() -- Lua
+require("onedark").setup({
+	-- Main options --
+	style = "dark", -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+	transparent = true, -- Show/hide background
+	term_colors = true, -- Change terminal color as per the selected theme style
+	ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
+	cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
+	-- toggle theme style ---
+	toggle_style_key = "<leader>ts", -- Default keybinding to toggle
+	toggle_style_list = { "dark", "darker", "cool", "deep", "warm", "warmer", "light" }, -- List of styles to toggle between
+
+	-- Change code style ---
+	-- Options are italic, bold, underline, none
+	-- You can configure multiple style with comma seperated, For e.g., keywords = 'italic,bold'
+	code_style = {
+		comments = "italic",
+		keywords = "none",
+		functions = "none",
+		strings = "none",
+		variables = "none",
+		brackets = "none",
+	},
+
+	-- Custom Highlights --
+	colors = {}, -- Override default colors
+	highlights = {}, -- Override highlight groups
+
+	-- Plugins Config --
+	diagnostics = {
+		darker = true, -- darker colors for diagnostic
+		undercurl = true, -- use undercurl instead of underline for diagnostics
+		background = true, -- use background color for virtual text
+	},
+})
 -- Lua
-require('onedark').load()-- Lua
-require('onedark').setup  {
-    -- Main options --
-    style = 'dark', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
-    transparent = true,  -- Show/hide background
-    term_colors = true, -- Change terminal color as per the selected theme style
-    ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
-    cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
-    -- toggle theme style ---
-    toggle_style_key = '<leader>ts', -- Default keybinding to toggle
-    toggle_style_list = {'dark', 'darker', 'cool', 'deep', 'warm', 'warmer', 'light'}, -- List of styles to toggle between
+-- require("onedark").load() -- Lua
+-- require("onedark").setup({
+-- 	-- Main options --
+-- 	style = "dark", -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+-- 	transparent = true, -- Show/hide background
+-- 	term_colors = true, -- Change terminal color as per the selected theme style
+-- 	ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
+-- 	cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
+-- 	-- toggle theme style ---
+-- 	toggle_style_key = "<leader>ts", -- Default keybinding to toggle
+-- 	toggle_style_list = { "dark", "darker", "cool", "deep", "warm", "warmer", "light" }, -- List of styles to toggle between
 
-    -- Change code style ---
-    -- Options are italic, bold, underline, none
-    -- You can configure multiple style with comma seperated, For e.g., keywords = 'italic,bold'
-    code_style = {
-        comments = 'italic',
-        keywords = 'none',
-        functions = 'none',
-        strings = 'none',
-        variables = 'none',
-        brackets = 'none',
-    },
+-- 	-- Change code style ---
+-- 	-- Options are italic, bold, underline, none
+-- 	-- You can configure multiple style with comma seperated, For e.g., keywords = 'italic,bold'
+-- 	code_style = {
+-- 		comments = "italic",
+-- 		keywords = "none",
+-- 		functions = "none",
+-- 		strings = "none",
+-- 		variables = "none",
+-- 		brackets = "none",
+-- 	},
 
-    -- Custom Highlights --
-    colors = {}, -- Override default colors
-    highlights = {}, -- Override highlight groups
+-- 	-- Custom Highlights --
+-- 	colors = {}, -- Override default colors
+-- 	highlights = {}, -- Override highlight groups
 
-    -- Plugins Config --
-    diagnostics = {
-        darker = true, -- darker colors for diagnostic
-        undercurl = true,   -- use undercurl instead of underline for diagnostics
-        background = true,    -- use background color for virtual text
-    },
-}
-vim.cmd ([[
+-- 	-- Plugins Config --
+-- 	diagnostics = {
+-- 		darker = true, -- darker colors for diagnostic
+-- 		undercurl = true, -- use undercurl instead of underline for diagnostics
+-- 		background = true, -- use background color for virtual text
+-- 	},
+-- })
+vim.cmd([[
+
 colorscheme onedark
 let g:neovide_refresh_rate=144
 let g:neovide_transparency=0.8
@@ -104,184 +141,183 @@ set.splitright = true
 set.wrap = true
 set.scrolloff = 5
 
-set.fileencoding = 'utf-8'
+set.fileencoding = "utf-8"
 set.hidden = true
-set.number = true;
+set.number = true
 set.relativenumber = true
 
 set.list = true
 set.listchars = "tab:>->,trail:●,eol:↴,space:⋅"
 
-
 set.guifont = "monospace:h10"
 set.laststatus = 3
-set.pastetoggle = '<F3>'
+set.pastetoggle = "<F3>"
 set.mouse = "a"
 
 set.termguicolors = true
 
-require("indent_blankline").setup {
-  char = "▏",
-  show_end_of_line = true,
-  show_current_context = true,
-  show_current_context_start = true,
-  space_char_blankline = " ",
-  vim.cmd([[
+require("indent_blankline").setup({
+	char = "▏",
+	show_end_of_line = true,
+	show_current_context = true,
+	show_current_context_start = true,
+	space_char_blankline = " ",
+	vim.cmd([[
     hi IndentLineChar guifg=#4b5263
-  ]])
-}
+  ]]),
+})
 
-require("nvim-treesitter.configs").setup {
-  ensure_isntalled = "all",
-  highlight = {
-    enable = true,
-    additional_vim_regex_higlighting = false,
-  }
-}
+require("nvim-treesitter.configs").setup({
+	ensure_isntalled = "all",
+	highlight = {
+		enable = true,
+		additional_vim_regex_higlighting = false,
+	},
+})
 
-require('telescope').setup {
-  defaults = {
-    mappings = {
-      i = {
-        ["<C-h>"] = "which_key"
-      }
-    }
-  },
-  pickers = {},
-  extensions = {}
-}
+require("telescope").setup({
+	defaults = {
+		mappings = {
+			i = {
+				["<C-h>"] = "which_key",
+			},
+		},
+	},
+	pickers = {},
+	extensions = {},
+})
 
-require('gitsigns').setup {
-  signs = {
-    add          = {hl = 'GitSignsAdd'   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
-    change       = {hl = 'GitSignsChange', text = '│', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
-    delete       = {hl = 'GitSignsDelete', text = '_', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-    topdelete    = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-    changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
-  },
-  signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
-  numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
-  linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
-  word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
-  watch_gitdir = {
-    interval = 1000,
-    follow_files = true
-  },
-  attach_to_untracked = true,
-  current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
-  current_line_blame_opts = {
-    virt_text = true,
-    virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
-    delay = 1000,
-    ignore_whitespace = false,
-  },
-  current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
-  sign_priority = 6,
-  update_debounce = 100,
-  status_formatter = nil, -- Use default
-  max_file_length = 40000,
-  preview_config = {
-    -- Options passed to nvim_open_win
-    border = 'single',
-    style = 'minimal',
-    relative = 'cursor',
-    row = 0,
-    col = 1
-  },
-  yadm = {
-    enable = false
-  },
-}
+require("gitsigns").setup({
+	signs = {
+		add = { hl = "GitSignsAdd", text = "│", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
+		change = { hl = "GitSignsChange", text = "│", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
+		delete = { hl = "GitSignsDelete", text = "_", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
+		topdelete = { hl = "GitSignsDelete", text = "‾", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
+		changedelete = { hl = "GitSignsChange", text = "~", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
+	},
+	signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
+	numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
+	linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
+	word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
+	watch_gitdir = {
+		interval = 1000,
+		follow_files = true,
+	},
+	attach_to_untracked = true,
+	current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
+	current_line_blame_opts = {
+		virt_text = true,
+		virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
+		delay = 1000,
+		ignore_whitespace = false,
+	},
+	current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
+	sign_priority = 6,
+	update_debounce = 100,
+	status_formatter = nil, -- Use default
+	max_file_length = 40000,
+	preview_config = {
+		-- Options passed to nvim_open_win
+		border = "single",
+		style = "minimal",
+		relative = "cursor",
+		row = 0,
+		col = 1,
+	},
+	yadm = {
+		enable = false,
+	},
+})
 -- LSP
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap=true, silent=true }
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+local opts = { noremap = true, silent = true }
+vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-  -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+	-- Enable completion triggered by <c-x><c-o>
+	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-  -- Mappings.
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-  vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-  vim.keymap.set('n', '<space>wl', function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, bufopts)
-  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-  vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+	-- Mappings.
+	-- See `:help vim.lsp.*` for documentation on any of the below functions
+	local bufopts = { noremap = true, silent = true, buffer = bufnr }
+	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+	vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
+	vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
+	vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
+	vim.keymap.set("n", "<space>wl", function()
+		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+	end, bufopts)
+	vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
+	vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
+	vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
+	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
+	vim.keymap.set("n", "<space>f", vim.lsp.buf.formatting, bufopts)
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'solargraph' }
+local servers = { "solargraph" }
 for _, lsp in pairs(servers) do
-  require('lspconfig')[lsp].setup {
-    on_attach = on_attach,
-    flags = {
-      -- This will be the default in neovim 0.7+
-      debounce_text_changes = 150,
-    }
-  }
+	require("lspconfig")[lsp].setup({
+		on_attach = on_attach,
+		flags = {
+			-- This will be the default in neovim 0.7+
+			debounce_text_changes = 150,
+		},
+	})
 end
 
-local sumneko_binary_path = vim.fn.exepath('lua-language-server')
-local sumneko_root_path = vim.fn.fnamemodify(sumneko_binary_path, ':h:h:h')
+local sumneko_binary_path = vim.fn.exepath("lua-language-server")
+local sumneko_root_path = vim.fn.fnamemodify(sumneko_binary_path, ":h:h:h")
 
-local runtime_path = vim.split(package.path, ';')
+local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-require'lspconfig'.sumneko_lua.setup {
-    cmd = {sumneko_binary_path, "-E", sumneko_root_path .. "/main.lua"};
-    settings = {
-        Lua = {
-        runtime = {
-            -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-            version = 'LuaJIT',
-            -- Setup your lua path
-            path = runtime_path,
-        },
-        diagnostics = {
-            -- Get the language server to recognize the `vim` global
-            globals = {'vim'},
-        },
-        workspace = {
-            -- Make the server aware of Neovim runtime files
-            library = vim.api.nvim_get_runtime_file("", true),
-        },
-        -- Do not send telemetry data containing a randomized but unique identifier
-        telemetry = {
-            enable = false,
-        },
-        },
-    },
-}
+require("lspconfig").sumneko_lua.setup({
+	cmd = { sumneko_binary_path, "-E", sumneko_root_path .. "/main.lua" },
+	settings = {
+		Lua = {
+			runtime = {
+				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+				version = "LuaJIT",
+				-- Setup your lua path
+				path = runtime_path,
+			},
+			diagnostics = {
+				-- Get the language server to recognize the `vim` global
+				globals = { "vim" },
+			},
+			workspace = {
+				-- Make the server aware of Neovim runtime files
+				library = vim.api.nvim_get_runtime_file("", true),
+			},
+			-- Do not send telemetry data containing a randomized but unique identifier
+			telemetry = {
+				enable = false,
+			},
+		},
+	},
+})
 
-require'nvim-tree'.setup {
-  update_cwd = true,
-}
+require("nvim-tree").setup({
+	update_cwd = true,
+})
 
-require'nvim-treesitter.configs'.setup {
-  matchup = {
-    enable = true,              -- mandatory, false will disable the whole extension
-  },
-}
+require("nvim-treesitter.configs").setup({
+	matchup = {
+		enable = true, -- mandatory, false will disable the whole extension
+	},
+})
 -- require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
 --   auto_reload_on_write = true,
 --   create_in_closed_folder = false,
@@ -455,48 +491,48 @@ require'nvim-treesitter.configs'.setup {
 --   },
 -- } -- END_DEFAULT_OPTS
 
-require('lualine').setup {
-  options = {
-    icons_enabled = true,
-    theme = 'onedark',
-    component_separators = { left = '', right = ''},
-    section_separators = { left = '', right = ''},
-    disabled_filetypes = {},
-    always_divide_middle = true,
-    globalstatus = false,
-  },
-  sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename'},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {'filename'},
-    lualine_x = {'location'},
-    lualine_y = {},
-    lualine_z = {}
-  },
-  tabline = {},
-  extensions = {}
-}
+require("lualine").setup({
+	options = {
+		icons_enabled = true,
+		theme = "onedark",
+		component_separators = { left = "", right = "" },
+		section_separators = { left = "", right = "" },
+		disabled_filetypes = {},
+		always_divide_middle = true,
+		globalstatus = false,
+	},
+	sections = {
+		lualine_a = { "mode" },
+		lualine_b = { "branch", "diff", "diagnostics" },
+		lualine_c = { "filename" },
+		lualine_x = { "encoding", "fileformat", "filetype" },
+		lualine_y = { "progress" },
+		lualine_z = { "location" },
+	},
+	inactive_sections = {
+		lualine_a = {},
+		lualine_b = {},
+		lualine_c = { "filename" },
+		lualine_x = { "location" },
+		lualine_y = {},
+		lualine_z = {},
+	},
+	tabline = {},
+	extensions = {},
+})
 
-require("bufferline").setup{
-  options = {
-    offsets = {
-      {
-        filetype = "NvimTree",
-        text = "File Explorer",
-        highlight = "Directory",
-        text_align = "left"
-      }
-    }
-  }
-}
+require("bufferline").setup({
+	options = {
+		offsets = {
+			{
+				filetype = "NvimTree",
+				text = "File Explorer",
+				highlight = "Directory",
+				text_align = "left",
+			},
+		},
+	},
+})
 -- require('bufferline').setup {
 --   options = {
 --     mode = "buffers", -- set to "tabs" to only show tabpages instead
@@ -571,50 +607,45 @@ require("bufferline").setup{
 --     end
 --   }
 -- }
-require("toggleterm").setup{
-  open_mapping = [[<c-a>]],
-  -- shade_terminals = true,
-  highlights = {
-    -- highlights which map to a highlight group name and a table of it's values
-    -- NOTE: this is only a subset of values, any group placed here will be set for the terminal window split
-    Normal = {
-      guibg = "NONE",
-    },
-  }
-}
-local Terminal = require('toggleterm.terminal').Terminal
-local lazygit = Terminal:new({ 
-  cmd = "lazygit",
-  hidden = true,
-  direction = "float",
-  close_on_exit = true,
+require("toggleterm").setup({
+	open_mapping = [[<c-a>]],
+	-- shade_terminals = true,
+	highlights = {
+		-- highlights which map to a highlight group name and a table of it's values
+		-- NOTE: this is only a subset of values, any group placed here will be set for the terminal window split
+		Normal = {
+			guibg = "NONE",
+		},
+	},
+})
+local Terminal = require("toggleterm.terminal").Terminal
+local lazygit = Terminal:new({
+	cmd = "lazygit",
+	hidden = true,
+	direction = "float",
+	close_on_exit = true,
 })
 
 function _lazygit_toggle()
-  lazygit:toggle()
+	lazygit:toggle()
 end
 
-vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
 
-require('neorg').setup {
-    load = {
-        ["core.defaults"] = {},
-        ["core.norg.dirman"] = {
-            config = {
-                workspaces = {
-                    work = "~/notes/work",
-                    home = "~/notes/home",
-                }
-            }
-        }
-    }
-}
+require("neorg").setup({
+	load = {
+		["core.defaults"] = {},
+		["core.norg.dirman"] = {
+			config = {
+				workspaces = {
+					work = "~/notes/work",
+					home = "~/notes/home",
+				},
+			},
+		},
+	},
+})
 
-vim.cmd([[
-  hi Normal guibg=#181a1f
-]])
-vim.cmd([[
-	autocmd FileType lua set tabstop=4
-	autocmd FileType lua set shiftwidth=4
-	autocmd FileType lua set expandtab!
-]])
+-- vim.cmd([[
+--   hi Normal guibg=#181a1f
+-- ]])
