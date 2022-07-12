@@ -11,11 +11,18 @@
     neovim = {
       enable = true;
       defaultEditor = true;
-      runtime = {
-        "ftplugin/lua.lua".text = builtins.readFile ./lua/ftplugin/lua.lua;
-      };
+      /* runtime = { */
+      /*   "init.lua" = { */
+      /*    enable = true; */
+      /*    source = ./lua/init.lua; */
+      /*   }; */
+      /*   "lua" = { */
+      /*     enable = true; */
+      /*     source = ./lua/after/ftplugin/lua.lua; */
+      /*   }; */
+      /* }; */
       configure = {
-      customRC = builtins.readFile ./.vimrc;
+      customRC = builtins.readFile ./.vimrc; 
         packages.myVimPackage = with pkgs.vimPlugins; {
           # loaded on launch
           start = [
