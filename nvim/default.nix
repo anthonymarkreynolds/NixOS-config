@@ -6,21 +6,17 @@
     rubyPackages.solargraph
     sumneko-lua-language-server
     stylua
+
+    nodejs-16_x
+    nodePackages.typescript
+    nodePackages.typescript-language-server
+    nodePackages.eslint
+    nodePackages.prettier
   ];
   programs = {
     neovim = {
       enable = true;
       defaultEditor = true;
-      /* runtime = { */
-      /*   "init.lua" = { */
-      /*    enable = true; */
-      /*    source = ./lua/init.lua; */
-      /*   }; */
-      /*   "lua" = { */
-      /*     enable = true; */
-      /*     source = ./lua/after/ftplugin/lua.lua; */
-      /*   }; */
-      /* }; */
       configure = {
       customRC = builtins.readFile ./.vimrc; 
         packages.myVimPackage = with pkgs.vimPlugins; {
@@ -35,11 +31,14 @@
             nvim-lspconfig
             vim-matchup
             neorg
+            null-ls-nvim
+            nvim-lsp-ts-utils
             (nvim-treesitter.withPlugins (
               plugins: with plugins; [
                 tree-sitter-nix
                 tree-sitter-lua
                 tree-sitter-ruby
+                tree-sitter-javascript
                 ]
             ))
             telescope-nvim
