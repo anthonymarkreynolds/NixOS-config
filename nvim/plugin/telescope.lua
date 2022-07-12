@@ -3,10 +3,6 @@ require("telescope").setup({
 		mappings = {
 			i = {
 				["<C-h>"] = "which_key",
-				["<leader>ff"] = "find_files",
-				["<leader>fg"] = "find_grep",
-				["<leader>fb"] = "buffers",
-				["<leader>fh"] = "help_tags",
 			},
 		},
 	},
@@ -14,3 +10,9 @@ require("telescope").setup({
 	extensions = {},
 })
 
+vim.cmd([[
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+]])
