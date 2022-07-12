@@ -3,7 +3,6 @@ vim.cmd([[
 
 let mapleader = "\<Space>"
 
-autocmd FileType nix :packadd vim-nix
 autocmd TermOpen * setlocal nonumber norelativenumber
 
 ]])
