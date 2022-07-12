@@ -6,8 +6,6 @@ autocmd TermOpen * setlocal nonumber norelativenumber
 ]])
 
 local set = vim.opt
-local let = vim.o
-local letg = vim.go
 
 set.expandtab = true
 set.smarttab = true
