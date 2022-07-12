@@ -1,4 +1,4 @@
-require("lua")
+-- require("lua")
 require("onedark").load() -- Lua
 require("onedark").setup({
 	-- Main options --
