@@ -1,3 +1,4 @@
+require("other_modules/keybinds")
 vim.cmd([[
 set timeout timeoutlen=3000 ttimeoutlen=100
 
@@ -6,24 +7,10 @@ let mapleader = "\<Space>"
 autocmd FileType nix :packadd vim-nix
 autocmd TermOpen * setlocal nonumber norelativenumber
 
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
-tnoremap <C-h> <c-\><c-n><C-w>h
-tnoremap <C-j> <c-\><c-n><C-w>j
-tnoremap <C-k> <c-\><c-n><C-w>k
-tnoremap <C-l> <c-\><c-n><C-w>l
 
 tnoremap <c-ESC> <c-\><c-n>
 
-nnoremap <C-n> :NvimTreeToggle<CR>
 
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 ]])
 
 local set = vim.opt
@@ -63,11 +50,6 @@ set.termguicolors = true
 -- LSP
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap = true, silent = true }
-vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -97,17 +79,6 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { "solargraph" }
-for _, lsp in pairs(servers) do
-	require("lspconfig")[lsp].setup({
-		on_attach = on_attach,
-		flags = {
-			-- This will be the default in neovim 0.7+
-			debounce_text_changes = 150,
-		},
-	})
-end
-
 
 local lspconfig = require("lspconfig")
 local null_ls = require("null-ls")
@@ -161,37 +132,4 @@ local null_ls = require("null-ls")null_ls.setup({
         null_ls.builtins.formatting.prettier
     },
     on_attach = on_attach
-})
-
-local sumneko_binary_path = vim.fn.exepath("lua-language-server")
-local sumneko_root_path = vim.fn.fnamemodify(sumneko_binary_path, ":h:h:h")
-
-local runtime_path = vim.split(package.path, ";")
-table.insert(runtime_path, "lua/?.lua")
-table.insert(runtime_path, "lua/?/init.lua")
-
-require("lspconfig").sumneko_lua.setup({
-	cmd = { sumneko_binary_path, "-E", sumneko_root_path .. "/main.lua" },
-	settings = {
-		Lua = {
-			runtime = {
-				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-				version = "LuaJIT",
-				-- Setup your lua path
-				path = runtime_path,
-			},
-			diagnostics = {
-				-- Get the language server to recognize the `vim` global
-				globals = { "vim" },
-			},
-			workspace = {
-				-- Make the server aware of Neovim runtime files
-				library = vim.api.nvim_get_runtime_file("", true),
-			},
-			-- Do not send telemetry data containing a randomized but unique identifier
-			telemetry = {
-				enable = false,
-			},
-		},
-	},
 })
