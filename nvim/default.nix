@@ -28,23 +28,53 @@
             lualine-nvim
             bufferline-nvim
             indent-blankline-nvim
-            nvim-lspconfig
             vim-matchup
             neorg
-            null-ls-nvim
+
+            # LSP
+            nvim-lspconfig
             nvim-lsp-ts-utils
+            null-ls-nvim
+            lspkind-nvim
+
+            # DEBUGGER
+            nvim-dap
+            nvim-dap-ui
+            nvim-dap-virtual-text
+
+            # COMPLETEION
+            nvim-cmp
+            cmp-buffer
+            cmp-path
+            cmp-cmdline
+            cmp-nvim-lsp
+
+            # SNIPPETS
+            luasnip
+
+            # TREESITTER
             (nvim-treesitter.withPlugins (
               plugins: with plugins; [
                 tree-sitter-nix
                 tree-sitter-lua
                 tree-sitter-ruby
                 tree-sitter-javascript
+                tree-sitter-json
+                tree-sitter-json5
+                tree-sitter-jsdoc
                 ]
             ))
+
+            # TELESCOPE
             telescope-nvim
+
+            # TERMINAL
             toggleterm-nvim
-            vim-unimpaired
+
+            # GIT
             gitsigns-nvim
+
+            vim-unimpaired
             vim-devicons
             vim-commentary
             vim-surround

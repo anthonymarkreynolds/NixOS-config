@@ -1,2 +1,2 @@
 luafile ~/.config/nvim/lua/init.lua
-so ~/.config/nvim/colors/colors.vim
+source ~/.config/nvim/colors/colors.vim
