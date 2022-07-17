@@ -12,6 +12,7 @@
     nodePackages.typescript-language-server
     nodePackages.eslint
     nodePackages.prettier
+    nodePackages.live-server
   ];
   programs = {
     neovim = {
