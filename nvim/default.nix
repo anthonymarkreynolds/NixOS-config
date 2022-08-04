@@ -14,6 +14,9 @@
     nodePackages.prettier
     nodePackages.live-server
   ];
+  environment.sessionVariables = rec {
+    NVIM_DIR = builtins.toString ./.;
+  };
   programs = {
     neovim = {
       enable = true;

@@ -36,8 +36,8 @@
       cat = "bat";
       lg = "lazygit";
       ls = "exa -la";
-      nr = "nixos-rebuild switch --flake ~/flakes/nixos/#anthony --use-remote-sudo";
-      nu = "nix flake update ~/flakes/nixos && nixos-rebuild switch --flake ~/flakes/nixos/#anthony --use-remote-sudo";
+      nr = "nixos-rebuild switch --flake ./#anthony --use-remote-sudo";
+      nu = "nix flake update . && nixos-rebuild switch --flake ./#anthony --use-remote-sudo";
     };
     shellInit = builtins.readFile ./shellInit.zsh;
     promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";

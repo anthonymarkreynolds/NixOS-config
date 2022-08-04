@@ -12,6 +12,7 @@
       ./tmux
       ./zsh
       ./nvim
+      ./kmonad
     ];
 
   nix = {
@@ -83,7 +84,7 @@
 
   # Configure keymap in X11
   services.xserver.layout = "us";
-  services.xserver.xkbOptions = "eurosign:e";
+  services.xserver.xkbOptions = "keypad:pointerkeys";
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -133,7 +134,9 @@
     vscode
     vlc
     baudline
+    ghc
 
+    xkbset
     ruby
     heroku
   ];
@@ -153,7 +156,6 @@
   };
 
   environment.sessionVariables = rec {
-    NVIM_DIR = "~/flakes/nixos/lua/";
     WINIT_X11_SCALE_FACTOR = "1";
   };
 
