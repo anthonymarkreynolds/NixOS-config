@@ -15,7 +15,7 @@
     nodePackages.live-server
   ];
   environment.sessionVariables = rec {
-    NVIM_DIR = builtins.toString ./.;
+    NVIM_DIR = builtins.toString ~/Repos/NixOS-config/nvim ;
   };
   programs = {
     neovim = {

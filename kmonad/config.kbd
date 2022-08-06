@@ -1,34 +1,98 @@
+#| --------------------------------------------------------------------------
+
+TEMPLATE
+
+(deflayer name
+  _    _    _    _    _    _    _         _    _    _    _    _    _    _
+  _    _    _    _    _    _    _         _    _    _    _    _    _    _
+  _    _    _    _    _    _              _    _    _    _    _    _    _    _
+  @dir _    _    _    _    _              _    _    _    _    _    _    _
+  _    _    _    _    _    _              _    _    _    _    _    _
+  _    _    _              _                   _    _    _    _
+)
+
+  -------------------------------------------------------------------------- |#
+
 (defcfg
   input  (device-file  "/dev/input/by-id/usb-Microsoft_Microsoft_Ergonomic_Keyboard_604094514721-event-kbd")
   output (uinput-sink "KMonad kbd"))
 
 (defalias
- mov (tap-next esc (layer-toggle movement)))
+  bas  (layer-switch base)
+  dvr  (layer-switch dvorak)
+  dir  (tap-next esc (layer-toggle directory))
+  cur  (layer-switch cursor)
+  nav  (layer-switch navigation)
+  num  (layer-switch numbers)
+
+
+
+  add S-=
+  mul S-8
+  pr1 S-9
+  pr2 S-0
+
+)
 
 (defsrc
   esc  f1   f2   f3   f4   f5   f6        f7   f8   f9   f10  f11  f12  del
-  grv  1    2    3    4    5    6         7    8    9    0    -    =    bspc  
-  tab  q    w    e    r    t              y    u    i    o    p    [    ]    \     
-  caps a    s    d    f    g              h    j    k    l    ;    '    ret        
-  lsft z    x    c    v    b              n    m    ,    .    /    rsft            
-  lctl lmet lalt           spc                 ralt rmet cmp  rctl           
+  grv  1    2    3    4    5    6         7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t              y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g              h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b              n    m    ,    .    /    rsft
+  lctl lmet lalt           spc                 ralt rmet cmp  rctl
 )
 
 (deflayer base
-  caps f1   f2   f3   f4   f5   f6        f7   f8   f9   f10  f11  f12  del 
-  grv  1    2    3    4    5    6         7    8    9    0    -    =    bspc  
-  tab  q    w    e    r    t              y    u    i    o    p    [    ]    \     
-  @mov a    s    d    f    g              h    j    k    l    ;    '    ret        
-  lsft z    x    c    v    b              n    m    ,    .    /    rsft            
-  lctl lmet lalt           spc                 bspc rmet cmp  rctl           
+  esc  f1   f2   f3   f4   f5   f6        f7   f8   f9   f10  f11  f12  del
+  grv  1    2    3    4    5    6         7    8    9    0    -    =    spc
+  tab  q    w    e    r    t              y    u    i    o    p    [    ]    \
+  @dir a    s    d    f    g              h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b              n    m    ,    .    /    rsft
+  lctl lmet lalt           spc                 bspc rmet cmp  rctl
 )
 
-(deflayer movement 
-  caps  f1   f2   f3   f4   f5   f6       f7   f8   f9   f10  f11  f12  del  
-  grv  1    2    3    4    5    6         7    8    9    0    -    =    bspc  
-  tab  q    w    kp*  kp-  kp/            y    kp7  kp9  o    p    [    ]    \     
-  esc  a    s    d    f    g              kp4  kp2  kp8  kp6  ;    '    ret        
-  lsft z    x    c    v    b              kp*  kp1  kp3  .    /    rsft            
-  lctl lmet lalt           kp5                 ralt rmet cmp  rctl           
+(deflayer dvorak
+  caps f1   f2   f3   f4   f5   f6        f7   f8   f9   f10  f11  f12  del
+  grv  1    2    3    4    5    6         7    8    9    0    [    ]    spc
+  tab  '    ,    .    p    y              f    g    c    r    l    /    =    \
+  @dir a    o    e    u    i              d    h    t    n    s    -    ret
+  lsft ;    q    j    k    x              b    m    w    v    z    rsft
+  lctl lmet lalt           spc                 bspc rmet cmp  rctl
 )
 
+(deflayer directory
+  _    _    _    _    _    _    _         _    _    _    _    _    _    _
+  _    _    _    _    _    _    _         _    _    _    _    _    _    _
+  _    _    _    _    _    _              _    _    _    _    _    _    _    _
+  _    _    _    @dvr _    _              _    @cur @num _    _    _    _
+  _    _    _    _    _    _              _    @nav _    _    _    _
+  _    _    _              @bas                _    _    _    _
+)
+
+(deflayer cursor 
+  _    _    _    _    _    _    _         _    _    _    _    _    _    _
+  _    _    _    _    _    _    _         _    _    _    _    _    _    _
+  _    _    _    _    _    _              _    kp7  kp9  _    _    _    _    _
+  @dir _    kp*  kp-  kp/  _              kp4  kp2  kp8  kp6  _    _    _
+  _    _    _    _    _    _              kp*  kp1  kp3  _    _    _
+  _    _    _              kp5                 _    _    _    _
+)
+
+(deflayer navigation
+  _    _    _    _    _    _    _         _    _    _    _    _    _    _
+  _    _    _    _    _    _    _         _    _    _    _    _    _    _
+  _    _    _    _    _    _              _    end  home _    _    _    _    _
+  @dir _    _    _    _    _              left down up   rght _    _    _
+  _    _    _    _    _    _              _    pgdn pgup _    _    _
+  _    _    _              _                   _    _    _    _
+)
+
+(deflayer numbers
+  _    _    _    _    _    _    _         _    _    _    _    _    _    _
+  _    _    _    _    _    _    _         _    _    _    _    _    _    _
+  _    _    _    @pr1 @pr2 _              _    7    8    9    _    _    _    _
+  @dir /    @mul -    @add =              .    4    5    6    _    _    ret
+  lsft _    _    _    _    _              0    1    2    3    _    _
+  _    _    _              _                   bspc _    _    _
+)
