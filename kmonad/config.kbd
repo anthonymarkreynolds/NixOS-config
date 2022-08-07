@@ -55,8 +55,8 @@ TEMPLATE
 (deflayer dvorak
   caps f1   f2   f3   f4   f5   f6        f7   f8   f9   f10  f11  f12  del
   grv  1    2    3    4    5    6         7    8    9    0    [    ]    spc
-  tab  '    ,    .    p    y              f    g    c    r    l    /    =    \
-  @dir a    o    e    u    i              d    h    t    n    s    -    ret
+  tab  -    ,    .    p    y              f    g    c    r    l    /    =    \
+  @dir a    o    e    u    i              d    h    t    n    s    '    ret
   lsft ;    q    j    k    x              b    m    w    v    z    rsft
   lctl lmet lalt           spc                 bspc rmet cmp  rctl
 )
@@ -65,7 +65,7 @@ TEMPLATE
   _    _    _    _    _    _    _         _    _    _    _    _    _    _
   _    _    _    _    _    _    _         _    _    _    _    _    _    _
   _    _    _    _    _    _              _    _    _    _    _    _    _    _
-  _    _    _    @dvr _    _              _    @cur @num _    _    _    _
+  _    _    _    _    @dvr _              _    @cur @num _    _    _    _
   _    _    _    _    _    _              _    @nav _    _    _    _
   _    _    _              @bas                _    _    _    _
 )
@@ -92,7 +92,7 @@ TEMPLATE
   _    _    _    _    _    _    _         _    _    _    _    _    _    _
   _    _    _    _    _    _    _         _    _    _    _    _    _    _
   _    _    _    @pr1 @pr2 _              _    7    8    9    _    _    _    _
-  @dir /    @mul -    @add =              .    4    5    6    _    _    ret
-  lsft _    _    _    _    _              0    1    2    3    _    _
-  _    _    _              _                   bspc _    _    _
+  @dir /    @mul -    @add =              .    4    5    6    0    _    ret
+  lsft _    _    _    _    _              _    1    2    3    _    _
+  _    _    _              spc                 bspc _    _    _
 )

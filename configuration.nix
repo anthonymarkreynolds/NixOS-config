@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      /etc/nixos/hardware_configuration
+      ./hardware_configuration.nix
       ./alacritty
       ./tmux
       ./zsh
@@ -115,6 +115,7 @@
   environment.systemPackages = with pkgs; [
     # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     /* google-chrome */
+    ardour
     obs-studio
     feh
     discord

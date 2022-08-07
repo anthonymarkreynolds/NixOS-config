@@ -60,6 +60,7 @@
             (nvim-treesitter.withPlugins (
               plugins: with plugins; [
                 tree-sitter-nix
+                tree-sitter-haskell
                 tree-sitter-lua
                 tree-sitter-ruby
                 tree-sitter-javascript
