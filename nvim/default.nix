@@ -13,6 +13,7 @@
     nodePackages.eslint
     nodePackages.prettier
     nodePackages.live-server
+    nodePackages.create-react-app
   ];
   environment.sessionVariables = rec {
     NVIM_DIR = builtins.toString ~/Repos/NixOS-config/nvim ;
@@ -67,6 +68,7 @@
                 tree-sitter-json
                 tree-sitter-json5
                 tree-sitter-jsdoc
+                tree-sitter-norg
                 ]
             ))
 

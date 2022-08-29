@@ -23,8 +23,8 @@ TEMPLATE
   dir  (tap-next esc (layer-toggle directory))
   cur  (layer-switch cursor)
   nav  (layer-switch navigation)
-  num  (layer-switch numbers)
-
+  num  (layer-toggle numbers)
+  msh  (tap-next lsft (layer-toggle myShift))
 
 
   add S-=
@@ -64,10 +64,10 @@ TEMPLATE
 (deflayer directory
   _    _    _    _    _    _    _         _    _    _    _    _    _    _
   _    _    _    _    _    _    _         _    _    _    _    _    _    _
-  _    _    _    _    _    _              _    _    _    _    _    _    _    _
-  _    _    _    _    @dvr _              _    @cur @num _    _    _    _
-  _    _    _    _    _    _              _    @nav _    _    _    _
-  _    _    _              @bas                _    _    _    _
+  _    _    _    _    _    _              _    @cur _    _    _    _    _    _
+  _    _    _    _    @num _              @dvr @bas @nav _    _    _    _
+  _    _    _    _    _    _              _    @num _    _    _    _
+  _    _    _              @bas                del  _    _    _
 )
 
 (deflayer cursor 
@@ -92,7 +92,16 @@ TEMPLATE
   _    _    _    _    _    _    _         _    _    _    _    _    _    _
   _    _    _    _    _    _    _         _    _    _    _    _    _    _
   _    _    _    @pr1 @pr2 _              _    7    8    9    _    _    _    _
-  @dir /    @mul -    @add =              .    4    5    6    0    _    ret
+  @dir /    @mul -    _    =              .    4    5    6    0    _    ret
   lsft _    _    _    _    _              _    1    2    3    _    _
   _    _    _              spc                 bspc _    _    _
+)
+
+(deflayer myShift
+  _    _    _    _    _    _    _         _    _    _    _    _    _    _
+  _    _    _    _    _    _    _         _    _    _    _    _    _    _
+  _    _    _    _    _    _              _    _    _    _    _    _    _    _
+  @dir _    _    _    _    _              _    _    _    _    _    _    _
+  _    _    _    _    _    _              _    _    _    _    _    _
+  _    _    _              _                   del  _    _    _
 )

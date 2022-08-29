@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware_configuration.nix
+      ./hardware-configuration.nix
       ./alacritty
       ./tmux
       ./zsh
