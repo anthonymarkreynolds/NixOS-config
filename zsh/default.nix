@@ -18,6 +18,7 @@
     fd
     tokei
     procs
+    ffmpeg
   ];
   programs.zsh = {
     enable = true;
