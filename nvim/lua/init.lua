@@ -30,7 +30,7 @@ set.relativenumber = true
 set.list = true
 set.listchars = "tab:>->,trail:●,eol:↴,space:⋅"
 
-set.guifont = "monospace:h10"
+set.guifont = "monospace:h9"
 set.laststatus = 3
 set.pastetoggle = "<F3>"
 set.mouse = "a"

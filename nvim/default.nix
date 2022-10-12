@@ -3,6 +3,9 @@
   environment.systemPackages = with pkgs; [
     neovide
 
+    purescript
+    spago
+
     rubyPackages.solargraph
     sumneko-lua-language-server
     stylua

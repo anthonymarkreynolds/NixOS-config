@@ -73,21 +73,44 @@
   #   keyMap = "us";
   # };
 
+    # Enable the X11 windowing system.
+    # services.xserver = {
+    #   enable = true;
+    #   layout = "us";
+    #   xkbOptions = "caps:swapescape,ctrl:swap_lalt_lctl";
+    #   videoDrivers = [ "amdgpu" ];
+    #   displayManager.defaultSession = "none+xmonad";
+    #   windowManager.xmonad = {
+    #     config = builtins.readFile ./xmonad/xmonad.hs;
+    #     enable = true;
+    #     enableContribAndExtras = true;
+    #     extraPackages = hpkgs: [           # Open configuration for additional Haskell packages.
+    #       hpkgs.xmonad-contrib             # Install xmonad-contrib.
+    #       hpkgs.xmonad-extras              # Install xmonad-extras.
+    #       hpkgs.xmonad                     # Install xmonad itself.
+    #     ];
+    #   };
+    #   libinput.enable = true;
+
+    # };
+
+
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   # services.xserver.desktopManager.plasma5.useQtScaling = true;
 
 
   # Enable the Plasma 5 Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+   services.xserver.displayManager.sddm.enable = true;
+   services.xserver.desktopManager.plasma5.enable = true;
 
   # Configure keymap in X11
-  services.xserver.layout = "us";
-  services.xserver.xkbOptions = "keypad:pointerkeys";
+   services.xserver.layout = "us";
+   services.xserver.xkbOptions = "keypad:pointerkeys";
 
   # Enable CUPS to print documents.
-  # services.printing.enable = true;
+   services.printing.enable = true;
 
   # Enable sound.
   sound.enable = true;
@@ -118,28 +141,20 @@
     ardour
     obs-studio
     feh
-    discord
     friture
     xclip
     calibre
     firefox
     git
-    ruby
-    rubyPackages.rspec
-    rubyPackages.rake
     git-crypt
     qemu
     virt-manager
-    vscode
     gimp
-    vscode
     vlc
     baudline
     ghc
 
     xkbset
-    ruby
-    heroku
   ];
 
   fonts = {

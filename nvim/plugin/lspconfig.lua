@@ -75,6 +75,12 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 require("lspconfig").tsserver.setup({
 	capabilities = capabilities,
+	cmd = {
+		"/run/current-system/sw/bin/typescript-language-server",
+		"--stdio",
+		"--tsserver-path",
+		"/run/current-system/sw/bin/tsc",
+	},
 	on_attach = function(client, bufnr)
 		client.resolved_capabilities.document_formatting = false
 		client.resolved_capabilities.document_range_formatting = false
