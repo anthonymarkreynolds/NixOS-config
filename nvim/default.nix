@@ -1,5 +1,20 @@
-{ config, pkgs, ... }:
-{
+{ config, pkgs,  ... }:
+
+let 
+  nvim-tree = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "nvim-tree.lua";
+    version = "2022-10-14";
+    src = pkgs.fetchFromGitHub {
+      owner = "nvim-tree";
+      repo=  "nvim-tree.lua";
+      rev = "b07701f9da3ec62016ad46002a6c0ae9b414574c";
+      sha256 = "xC4zFCMSo+qmh0VVmRGOMvjEYi3kop1ncBDwk8uxEQ0=";
+      fetchSubmodules = true;
+    };
+    meta.homepage = "https://github.com/kyazdani42/nvim-tree.lua/";
+  };
+
+in {
   environment.systemPackages = with pkgs; [
     neovide
 
@@ -31,7 +46,7 @@
           # loaded on launch
           start = [
             onedark-nvim
-            nvim-tree-lua
+            nvim-tree
             nvim-web-devicons
             lualine-nvim
             bufferline-nvim
