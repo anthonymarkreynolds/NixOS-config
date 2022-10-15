@@ -25,6 +25,7 @@ require("lspconfig").sumneko_lua.setup({
 				-- Get the language server to recognize the `vim` global
 				globals = { "vim" },
 			},
+
 			workspace = {
 				-- Make the server aware of Neovim runtime files
 				library = vim.api.nvim_get_runtime_file("", true),
@@ -71,7 +72,7 @@ local on_attach = function(client, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 require("lspconfig").tsserver.setup({
 	capabilities = capabilities,
@@ -97,10 +98,12 @@ require("lspconfig").tsserver.setup({
 local null_ls = require("null-ls")
 null_ls.setup({
 	sources = {
-		null_ls.builtins.diagnostics.eslint,
 		null_ls.builtins.code_actions.eslint,
-		null_ls.builtins.formatting.prettier,
+		null_ls.builtins.formatting.eslint,
+		null_ls.builtins.formatting.stylua,
+		null_ls.builtins.diagnostics.eslint,
+		null_ls.builtins.diagnostics.codepsell,
+		null_ls.builtins.diagnostics.deadnix,
 	},
 	on_attach = on_attach,
 })
-

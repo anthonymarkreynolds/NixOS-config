@@ -1,10 +1,16 @@
-require("telescope").setup({
+local telescope = require("telescope")
+
+telescope.setup({
 	defaults = {
 		mappings = {
 			i = {
 				["<C-h>"] = "which_key",
 			},
 		},
+	layout_config = {
+	width = 0.999999999,
+	height = 0.999999999,
+	},
 	},
 	pickers = {},
 	extensions = {},

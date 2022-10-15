@@ -154,6 +154,8 @@
     baudline
     ghc
 
+    epr
+
     xkbset
   ];
 

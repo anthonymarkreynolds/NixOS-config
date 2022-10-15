@@ -52,15 +52,4 @@ hi ToggleTerm1FloatBorder guifg=#2c323c
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 hi NvimTreeNormal guibg=#282c34
 hi NvimTreeEndOfBuffer guibg=#282c34
-hi lualine_c_normal guibg=#282c34
-hi lualine_transitional_lualine_b_normal_to_lualine_c_normal guibg=#282c34
-hi lualine_transitional_lualine_b_diff_added_normal_to_lualine_c_normal guibg=#282c34
-hi lualine_transitional_lualine_b_diff_added_normal_to_lualine_c_insert guibg=#282c34
-hi lualine_transitional_lualine_b_diff_added_normal_to_lualine_c_command guibg=#282c34
-hi lualine_x_filetype_DevIconLua_normal guibg=#282c34
-hi lualine_x_filetype_DevIconLua_insert guibg=#282c34
-hi lualine_x_filetype_DevIconLua_command guibg=#282c34
-hi lualine_x_filetype_DevIconLua_inactive guibg=#282c34
-hi lualine_x_filetype_DevIconLua_terminal guibg=#282c34
-
 ]])
