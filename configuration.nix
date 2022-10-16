@@ -157,6 +157,8 @@
     epr
 
     xkbset
+
+    nix-prefetch-github
   ];
 
   fonts = {

@@ -7,10 +7,10 @@ telescope.setup({
 				["<C-h>"] = "which_key",
 			},
 		},
-	layout_config = {
-	width = 0.999999999,
-	height = 0.999999999,
-	},
+		layout_config = {
+			width = 0.999999999,
+			height = 0.999999999,
+		},
 	},
 	pickers = {},
 	extensions = {},

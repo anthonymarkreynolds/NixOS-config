@@ -1,7 +1,9 @@
 { config, pkgs,  ... }:
 
-let 
-  nvim-tree = pkgs.vimUtils.buildVimPluginFrom2Nix {
+with pkgs.vimUtils;
+
+let
+  nvim-tree = buildVimPluginFrom2Nix {
     pname = "nvim-tree.lua";
     version = "2022-10-14";
     src = pkgs.fetchFromGitHub {
@@ -12,6 +14,28 @@ let
       fetchSubmodules = true;
     };
     meta.homepage = "https://github.com/kyazdani42/nvim-tree.lua/";
+  };
+  twilight-nvim = buildVimPluginFrom2Nix {
+    pname = "twilight.lua";
+    version = "2022-10-16";
+    src = pkgs.fetchFromGitHub {
+      owner = "folke";
+      repo=  "twilight.nvim";
+      rev = "1ffa6a4d89fb2fbb784c6674044bf54f1fca936f";
+      sha256 = "ryjYff6ljCTx9wwq3idl5g34Kjr4zbOJLON3oYqvgas=";
+    };
+    meta.homepage = "https://github.com/folke/twilight.nvim";
+  };
+  neononame = buildVimPluginFrom2Nix {
+    pname = "neononame.lua";
+    version = "2022-10-16";
+    src = pkgs.fetchFromGitHub {
+      owner = "nyngwang";
+      repo= "neononame.lua";
+      rev ="575f48c708dd19f2c873c3abb42b15a49060ab47";
+      sha256 ="j6lyRA4Xq75GJLBXfxA5JSdSsA3AVhHrmCsWHPf4EZs=";
+    };
+    meta.homepage = "https://github.com/nyngwang/NeoNoName.lua";
   };
 
 in {
@@ -41,7 +65,7 @@ in {
       enable = true;
       defaultEditor = true;
       configure = {
-      customRC = builtins.readFile ./.vimrc; 
+      customRC = builtins.readFile ./.vimrc;
         packages.myVimPackage = with pkgs.vimPlugins; {
           # loaded on launch
           start = [
@@ -53,6 +77,8 @@ in {
             indent-blankline-nvim
             vim-matchup
             neorg
+            twilight-nvim
+            neononame
 
             # LSP
             nvim-lspconfig

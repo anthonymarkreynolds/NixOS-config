@@ -1,5 +1,4 @@
 require("toggleterm").setup({
-	open_mapping = [[<c-a>]],
 	-- shade_terminals = true,
 	highlights = {
 		-- highlights which map to a highlight group name and a table of it's values
@@ -15,7 +14,7 @@ vim.keymap.set("t", "<C-h>", "<c-\\><c-n><C-w>h", opts)
 vim.keymap.set("t", "<C-j>", "<c-\\><c-n><C-w>j", opts)
 vim.keymap.set("t", "<C-k>", "<c-\\><c-n><C-w>k", opts)
 vim.keymap.set("t", "<C-l>", "<c-\\><c-n><C-w>l", opts)
-vim.keymap.set("t", "<c-ESC>","<c-\\><c-n>", opts)
+vim.keymap.set("t", "<c-ESC>", "<c-\\><c-n>", opts)
 
 local Terminal = require("toggleterm.terminal").Terminal
 local lazygit = Terminal:new({
@@ -29,4 +28,5 @@ function _lazygit_toggle()
 	lazygit:toggle()
 end
 
+vim.keymap.set("n", "<leader>bd", "<cmd>lua closeBuf()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
