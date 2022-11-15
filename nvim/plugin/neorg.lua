@@ -2,7 +2,9 @@ require("neorg").setup({
 	load = {
 		["core.defaults"] = {},
 		["core.gtd.base"] = {
-			config = {}
+			config = {
+				workspace = "home",
+			},
 		},
 		["core.norg.concealer"] = {},
 		["core.norg.dirman"] = {

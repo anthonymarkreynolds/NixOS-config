@@ -23,7 +23,7 @@ TEMPLATE
   dir  (tap-next esc (layer-toggle directory))
   cur  (layer-switch cursor)
   nav  (layer-switch navigation)
-  num  (layer-toggle numbers)
+  num  (layer-switch numbers)
   msh  (tap-next lsft (layer-toggle myShift))
 
 
@@ -92,8 +92,8 @@ TEMPLATE
   _    _    _    _    _    _    _         _    _    _    _    _    _    _
   _    _    _    _    _    _    _         _    _    _    _    _    _    _
   _    _    _    @pr1 @pr2 _              _    7    8    9    _    _    _    _
-  @dir /    @mul -    _    =              .    4    5    6    0    _    ret
-  lsft _    _    _    _    _              _    1    2    3    _    _
+  @dir /    @mul -    _    =              .    4    5    6    _    _    ret
+  lsft _    _    _    _    _              0    1    2    3    _    _
   _    _    _              spc                 bspc _    _    _
 )
 

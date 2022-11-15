@@ -37,6 +37,17 @@ let
     };
     meta.homepage = "https://github.com/nyngwang/NeoNoName.lua";
   };
+  neog = buildVimPluginFrom2Nix {
+    pname = "neorg.lua";
+    version = "2022-10-16";
+    src = pkgs.fetchFromGitHub {
+      owner = "nvim-neorg";
+      repo= "neorg";
+      rev = "278e989435b5859ae8b3bcb8d718cd57ba106412";
+      sha256 = "1HzxGC1J7GVfff+R9SbQ+rPr26l0sZkiha5jsZp/e6E=";
+    };
+    meta.homepage = "https://github.com/nvim-neorg/neorg";
+  };
 
 in {
   environment.systemPackages = with pkgs; [
@@ -79,6 +90,7 @@ in {
             neorg
             twilight-nvim
             neononame
+            emmet-vim
 
             # LSP
             nvim-lspconfig
@@ -113,6 +125,7 @@ in {
                 tree-sitter-json5
                 tree-sitter-jsdoc
                 tree-sitter-norg
+                tree-sitter-embedded-template
                 ]
             ))
 

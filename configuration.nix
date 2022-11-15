@@ -122,6 +122,7 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
 
+  services.mongodb.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.anthony = {
@@ -152,13 +153,21 @@
     gimp
     vlc
     baudline
-    ghc
+    /* gha */
 
     epr
 
     xkbset
 
     nix-prefetch-github
+
+    vscode
+
+    openssl
+
+    # RAKU
+    unstable.rakudo
+    unstable.zef
   ];
 
   fonts = {

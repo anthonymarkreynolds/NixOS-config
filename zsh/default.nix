@@ -19,6 +19,7 @@
     tokei
     procs
     ffmpeg
+    curlie
   ];
   programs.zsh = {
     enable = true;
