@@ -60,7 +60,7 @@ in {
     sumneko-lua-language-server
     stylua
 
-    nodejs-16_x
+    nodejs-18_x
     nodePackages.typescript
     nodePackages.typescript-language-server
     nodePackages.eslint
