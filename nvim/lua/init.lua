@@ -11,6 +11,8 @@ set.expandtab = true
 set.smarttab = true
 set.shiftwidth = 2
 set.tabstop = 2
+set.cursorcolumn = false
+set.cursorline = true
 
 set.hlsearch = false
 set.incsearch = true

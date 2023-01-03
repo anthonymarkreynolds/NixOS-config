@@ -5,6 +5,7 @@ require("nvim-tree").setup({
 	update_cwd = true,
 	auto_reload_on_write = true,
 	open_on_setup = true,
+	hijack_cursor = true,
 	diagnostics = {
 		enable = true,
 		show_on_dirs = true,
